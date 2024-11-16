@@ -1,0 +1,101 @@
+Student_ID,Name,Subject,Past_Score,Preferred_Learning_Method,Preferred_Test_Type,Effective_Learning_Method
+S001,Student_1,History,78,Reading,Written,Group Studies
+S002,Student_2,Math,91,Group Studies,Written,Video Tutorials
+S003,Student_3,History,68,Practice Tests,Written,Group Studies
+S004,Student_4,History,54,Reading,Oral,Reading
+S005,Student_5,Math,82,Reading,Written,Reading
+S006,Student_6,History,47,Practice Tests,Written,Group Studies
+S007,Student_7,Math,60,Reading,Oral,Practice Tests
+S008,Student_8,History,78,Group Studies,Multiple-Choice,Reading
+S009,Student_9,Math,97,Practice Tests,Multiple-Choice,Practice Tests
+S010,Student_10,Science,58,Group Studies,Oral,Reading
+S011,Student_11,Math,62,Group Studies,Written,Practice Tests
+S012,Student_12,History,50,Reading,Multiple-Choice,Video Tutorials
+S013,Student_13,History,50,Reading,Oral,Reading
+S014,Student_14,History,63,Group Studies,Multiple-Choice,Group Studies
+S015,Student_15,History,92,Group Studies,Written,Video Tutorials
+S016,Student_16,History,75,Practice Tests,Oral,Group Studies
+S017,Student_17,History,79,Group Studies,Multiple-Choice,Practice Tests
+S018,Student_18,Math,63,Group Studies,Multiple-Choice,Reading
+S019,Student_19,Math,42,Group Studies,Oral,Reading
+S020,Student_20,Math,61,Reading,Multiple-Choice,Reading
+S021,Student_21,English,92,Practice Tests,Written,Practice Tests
+S022,Student_22,History,41,Practice Tests,Oral,Reading
+S023,Student_23,Math,63,Practice Tests,Multiple-Choice,Practice Tests
+S024,Student_24,History,83,Reading,Written,Group Studies
+S025,Student_25,Science,69,Video Tutorials,Oral,Reading
+S026,Student_26,Math,77,Video Tutorials,Written,Group Studies
+S027,Student_27,Science,41,Reading,Multiple-Choice,Reading
+S028,Student_28,Math,99,Group Studies,Written,Video Tutorials
+S029,Student_29,Science,60,Video Tutorials,Multiple-Choice,Reading
+S030,Student_30,Science,72,Practice Tests,Oral,Reading
+S031,Student_31,Science,51,Group Studies,Multiple-Choice,Group Studies
+S032,Student_32,English,97,Video Tutorials,Oral,Reading
+S033,Student_33,Science,61,Group Studies,Oral,Practice Tests
+S034,Student_34,Science,83,Video Tutorials,Written,Group Studies
+S035,Student_35,History,64,Reading,Oral,Video Tutorials
+S036,Student_36,Science,88,Practice Tests,Oral,Video Tutorials
+S037,Student_37,Science,66,Group Studies,Oral,Video Tutorials
+S038,Student_38,Science,98,Group Studies,Written,Practice Tests
+S039,Student_39,History,81,Group Studies,Written,Video Tutorials
+S040,Student_40,History,67,Video Tutorials,Oral,Group Studies
+S041,Student_41,English,99,Group Studies,Oral,Reading
+S042,Student_42,Math,55,Video Tutorials,Multiple-Choice,Group Studies
+S043,Student_43,Science,54,Group Studies,Multiple-Choice,Practice Tests
+S044,Student_44,English,86,Reading,Oral,Reading
+S045,Student_45,History,90,Video Tutorials,Oral,Practice Tests
+S046,Student_46,History,83,Reading,Multiple-Choice,Video Tutorials
+S047,Student_47,Math,94,Reading,Written,Practice Tests
+S048,Student_48,History,91,Video Tutorials,Oral,Video Tutorials
+S049,Student_49,History,96,Practice Tests,Multiple-Choice,Practice Tests
+S050,Student_50,English,42,Group Studies,Oral,Practice Tests
+S051,Student_51,Math,76,Video Tutorials,Oral,Reading
+S052,Student_52,Science,90,Practice Tests,Oral,Practice Tests
+S053,Student_53,Science,46,Reading,Written,Reading
+S054,Student_54,History,60,Group Studies,Oral,Practice Tests
+S055,Student_55,Science,48,Reading,Multiple-Choice,Video Tutorials
+S056,Student_56,History,78,Practice Tests,Written,Practice Tests
+S057,Student_57,Math,57,Group Studies,Multiple-Choice,Practice Tests
+S058,Student_58,Science,43,Practice Tests,Written,Video Tutorials
+S059,Student_59,English,64,Practice Tests,Multiple-Choice,Video Tutorials
+S060,Student_60,Math,99,Reading,Oral,Reading
+S061,Student_61,History,53,Practice Tests,Written,Group Studies
+S062,Student_62,English,89,Video Tutorials,Written,Practice Tests
+S063,Student_63,History,97,Practice Tests,Multiple-Choice,Practice Tests
+S064,Student_64,English,48,Reading,Written,Reading
+S065,Student_65,History,65,Video Tutorials,Multiple-Choice,Group Studies
+S066,Student_66,English,92,Reading,Written,Group Studies
+S067,Student_67,English,41,Reading,Oral,Reading
+S068,Student_68,Science,59,Video Tutorials,Oral,Group Studies
+S069,Student_69,Science,67,Reading,Oral,Reading
+S070,Student_70,History,86,Practice Tests,Multiple-Choice,Reading
+S071,Student_71,English,99,Reading,Written,Practice Tests
+S072,Student_72,English,46,Video Tutorials,Oral,Video Tutorials
+S073,Student_73,Math,83,Video Tutorials,Oral,Practice Tests
+S074,Student_74,Science,47,Reading,Multiple-Choice,Video Tutorials
+S075,Student_75,Math,86,Practice Tests,Written,Reading
+S076,Student_76,Math,74,Video Tutorials,Multiple-Choice,Practice Tests
+S077,Student_77,English,53,Group Studies,Multiple-Choice,Practice Tests
+S078,Student_78,Math,56,Practice Tests,Multiple-Choice,Group Studies
+S079,Student_79,History,75,Group Studies,Written,Reading
+S080,Student_80,English,89,Reading,Written,Group Studies
+S081,Student_81,Science,79,Group Studies,Multiple-Choice,Practice Tests
+S082,Student_82,Science,43,Practice Tests,Oral,Video Tutorials
+S083,Student_83,English,41,Video Tutorials,Written,Reading
+S084,Student_84,English,45,Group Studies,Oral,Video Tutorials
+S085,Student_85,Math,93,Video Tutorials,Multiple-Choice,Video Tutorials
+S086,Student_86,Science,81,Video Tutorials,Written,Video Tutorials
+S087,Student_87,History,43,Practice Tests,Multiple-Choice,Practice Tests
+S088,Student_88,Science,93,Group Studies,Written,Reading
+S089,Student_89,History,68,Reading,Written,Video Tutorials
+S090,Student_90,Science,57,Reading,Multiple-Choice,Practice Tests
+S091,Student_91,Math,65,Reading,Written,Video Tutorials
+S092,Student_92,History,83,Practice Tests,Oral,Reading
+S093,Student_93,Science,73,Reading,Written,Video Tutorials
+S094,Student_94,Math,49,Video Tutorials,Written,Practice Tests
+S095,Student_95,Science,75,Practice Tests,Oral,Practice Tests
+S096,Student_96,Math,53,Reading,Written,Video Tutorials
+S097,Student_97,History,70,Group Studies,Multiple-Choice,Video Tutorials
+S098,Student_98,English,87,Reading,Written,Practice Tests
+S099,Student_99,Math,54,Group Studies,Multiple-Choice,Video Tutorials
+S100,Student_100,Math,47,Group Studies,Oral,Group Studies

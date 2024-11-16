@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Method Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Learning Method Predictor</h2>
+        <form id="predict-form">
+            <label for="name">Student Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="subject">Subject:</label>
+            <select id="subject" name="subject" required>
+                <option value="Math">Math</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+                <option value="History">History</option>
+            </select>
+
+            <label for="past_score">Past Score:</label>
+            <input type="number" id="past_score" name="past_score" min="0" max="100" required>
+
+            <label for="preferred_learning_method">Preferred Learning Method:</label>
+            <select id="preferred_learning_method" name="preferred_learning_method" required>
+                <option value="Video Tutorials">Video Tutorials</option>
+                <option value="Group Studies">Group Studies</option>
+                <option value="Reading">Reading</option>
+                <option value="Practice Tests">Practice Tests</option>
+            </select>
+
+            <label for="preferred_test_type">Preferred Test Type:</label>
+            <select id="preferred_test_type" name="preferred_test_type" required>
+                <option value="Written">Written</option>
+                <option value="Oral">Oral</option>
+                <option value="Multiple-Choice">Multiple-Choice</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('predict-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    const name = document.getElementById('name').value;
+    const subject = document.getElementById('subject').value;
+    const past_score = document.getElementById('past_score').value;
+    const preferred_learning_method = document.getElementById('preferred_learning_method').value;
+    const preferred_test_type = document.getElementById('preferred_test_type').value;
+
+    const payload = {
+        name: name,
+        subject: subject,
+        past_score: parseInt(past_score),
+        preferred_learning_method: preferred_learning_method,
+        preferred_test_type: preferred_test_type
+    };
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+
+            // Dynamically handle predicted_learning_method
+            const predicted_learning_method = data.predicted_learning_method;
+
+            // Map learning methods to specific pages
+            const learningMethodActions = {
+                "Practice Tests": "practice-tests.html",
+                "Video Tutorials": "video-tutorials.html",
+                "Group Studies": "group-studies.html",
+                "Reading": "reading.html"
+            };
+
+            // Check the predicted method and show a popup
+            if (learningMethodActions[predicted_learning_method]) {
+                const redirectPage = learningMethodActions[predicted_learning_method];
+                alert(`Predicted Learning Method: ${predicted_learning_method}. You will be redirected to the ${predicted_learning_method} page.`);
+                window.location.href = redirectPage; // Redirect to the specific page
+            } else {
+                alert("Unknown Predicted Learning Method. No page to navigate.");
+            }
+        } else {
+            const errorData = await response.json();
+            alert(`Error: ${errorData.error}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error.message}`);
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Method Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f8;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #08222E;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header img {
+            max-height: 60px;
+            vertical-align: middle;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #104862;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #46B1E1;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 25px;
+            background-color: #46B1E1;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #104862;
+        }
+        .error {
+            color: #FF0000;
+            margin-top: 10px;
+        }
+        .footer {
+            background-color: #08222E;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* Modal Popup Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll */
+            background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #ffffff;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        #close-btn {
+            color: #aaaaaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #close-btn:hover,
+        #close-btn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            button {
+                font-size: 16px;
+            }
+            .modal-content {
+                width: 90%;
+                margin-top: 50%;
+            }
+            .header img {
+                max-height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- Replace the text with your logo image -->
+        <img src="logo.jpeg" alt="Logo">
+    </div>
+    <div class="container">
+        <h2>Learning Method Predictor</h2>
+        <form id="predict-form">
+            <label for="name">Student Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="Math">Math</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+                <option value="History">History</option>
+            </select>
+
+            <label for="past_score">Past Score</label>
+            <input type="number" id="past_score" name="past_score" min="0" max="100" placeholder="Enter your past score" required>
+
+            <label for="preferred_learning_method">Preferred Learning Method</label>
+            <select id="preferred_learning_method" name="preferred_learning_method" required>
+                <option value="" disabled selected>Select a learning method</option>
+                <option value="Video Tutorials">Video Tutorials</option>
+                <option value="Group Studies">Group Studies</option>
+                <option value="Reading">Reading</option>
+                <option value="Practice Tests">Practice Tests</option>
+            </select>
+
+            <label for="preferred_test_type">Preferred Test Type</label>
+            <select id="preferred_test_type" name="preferred_test_type" required>
+                <option value="" disabled selected>Select a test type</option>
+                <option value="Written">Written</option>
+                <option value="Oral">Oral</option>
+                <option value="Multiple-Choice">Multiple-Choice</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="error" id="error"></div>
+    </div>
+    <div class="footer">
+        &copy; 2024 <b>Lærenett</b> . All rights reserved.
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="popup-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-btn">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('predict-form').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            const name = document.getElementById('name').value.trim();
+            const subject = document.getElementById('subject').value;
+            const past_score = document.getElementById('past_score').value;
+            const preferred_learning_method = document.getElementById('preferred_learning_method').value;
+            const preferred_test_type = document.getElementById('preferred_test_type').value;
+
+            const payload = {
+                name: name,
+                subject: subject,
+                past_score: parseInt(past_score),
+                preferred_learning_method: preferred_learning_method,
+                preferred_test_type: preferred_test_type
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+
+                    // Dynamically handle predicted_learning_method
+                    const predicted_learning_method = data.predicted_learning_method;
+
+                    // Map learning methods to specific pages
+                    const learningMethodActions = {
+                        "Practice Tests": "practice-tests.html",
+                        "Video Tutorials": "video-tutorials.html",
+                        "Group Studies": "group-studies.html",
+                        "Reading": "reading.html"
+                    };
+
+                    // Display modal popup and redirect
+                    if (learningMethodActions[predicted_learning_method]) {
+                        const redirectPage = learningMethodActions[predicted_learning_method];
+
+                        // Show modal popup
+                        const modal = document.getElementById('popup-modal');
+                        const modalMessage = document.getElementById('modal-message');
+                        const closeBtn = document.getElementById('close-btn');
+
+                        modalMessage.innerHTML = `<strong>Recommended Learning Method:</strong> ${predicted_learning_method}<br>We are moving to the preferred learning method page.`;
+                        modal.style.display = 'block';
+
+                        // Close the modal when the user clicks the close button
+                        closeBtn.onclick = function() {
+                            modal.style.display = 'none';
+                            window.location.href = redirectPage;
+                        }
+
+                        // Close the modal when the user clicks anywhere outside of the modal
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = 'none';
+                                window.location.href = redirectPage;
+                            }
+                        }
+
+                        // Automatically redirect after a few seconds
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            window.location.href = redirectPage;
+                        }, 5000); // Redirect after 5 seconds
+
+                    } else {
+                        alert("Unknown Predicted Learning Method. No page to navigate.");
+                    }
+
+                } else {
+                    const errorData = await response.json();
+                    document.getElementById('error').textContent = `Error: ${errorData.error}`;
+                }
+            } catch (error) {
+                document.getElementById('error').textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
